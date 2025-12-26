@@ -14,6 +14,7 @@ faiss-cpu==1.13.2
 filelock==3.20.1
 frozenlist==1.8.0
 fsspec==2025.12.0
+greenlet==3.3.0
 h11==0.16.0
 hf-xet==1.2.0
 httpcore==1.0.9
@@ -50,11 +51,13 @@ openai-whisper==20250625
 orjson==3.11.5
 ormsgpack==1.12.1
 packaging==25.0
+playwright==1.57.0
 propcache==0.4.1
 pycparser==2.23
 pydantic==2.12.5
 pydantic-settings==2.12.0
 pydantic_core==2.41.5
+pyee==13.0.0
 python-dotenv==1.2.1
 PyYAML==6.0.3
 regex==2025.11.3
