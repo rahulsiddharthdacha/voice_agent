@@ -1,7 +1,7 @@
 # vectorstore/build_store.py
 
 import json
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
@@ -25,6 +25,7 @@ def build():
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL
     )
+    
 
     db = FAISS.from_texts(
         texts=texts,
