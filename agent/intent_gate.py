@@ -1,6 +1,7 @@
 import numpy as np
 import re
 from langchain_huggingface import HuggingFaceEmbeddings
+import json
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
@@ -10,8 +11,9 @@ with open("data/raw/where_is_my_money_links.json") as f:
 
 CANONICAL_ALLOWED_QUERIES = [item['title'] for item in links]
 
+print(CANONICAL_ALLOWED_QUERIES)
 
-SIMILARITY_THRESHOLD = 0.72
+SIMILARITY_THRESHOLD = 0.50
 
 
 def normalize(vec: np.ndarray) -> np.ndarray:
@@ -52,5 +54,12 @@ class IntentGate:
         )
 
         scores = self.allowed_embeddings @ query_embedding
+
+        logs = [
+            f"Score against '{CANONICAL_ALLOWED_QUERIES[i]}': {scores[i]:.4f}"
+            for i in range(len(CANONICAL_ALLOWED_QUERIES))
+        ]
+
+        print("\n".join(logs))
 
         return float(np.max(scores)) >= SIMILARITY_THRESHOLD
